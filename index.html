@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Cumpleaños</title>
+    <style>
+        /* Estilos CSS */
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Dancing Script', cursive;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 5rem;
+            animation: fadeIn 2s ease-in-out;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0;
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin-top: 10px;
+            color: #333;
+            animation: slideUp 2s ease-in-out;
+        }
+
+        /* Animación de confeti */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ff6b6b;
+            opacity: 0.8;
+            animation: fall 5s linear infinite;
+            border-radius: 50%;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: scale(0.5); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes slideUp {
+            0% { opacity: 0; transform: translateY(50px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Estilos para el botón */
+        .btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            font-family: 'Dancing Script', cursive;
+            color: #fff;
+            background: #ff6b6b;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .btn:hover {
+            background: #ff8e53;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>¡Feliz Cumpleaños!</h1>
+        <p>Que este día esté lleno de alegría y momentos inolvidables.</p>
+        <button class="btn" onclick="playSound()">Toca para celebrar</button>
+    </div>
+
+    <script>
+        // JavaScript para crear confeti y reproducir un sonido
+        function createConfetti() {
+            const confettiContainer = document.body;
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.animationDelay = Math.random() * 5 + 's';
+                confetti.style.background = `hsl(${Math.random() * 360}, 70%, 70%)`;
+                confettiContainer.appendChild(confetti);
+            }
+        }
+
+        function playSound() {
+            const audio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
+            audio.play();
+            alert('¡Que comience la fiesta!');
+        }
+
+        // Crear confeti al cargar la página
+        window.onload = createConfetti;
+    </script>
+
+    <!-- Importar fuente elegante desde Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+</body>
+</html>
